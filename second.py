@@ -37,12 +37,14 @@ for i, kx in enumerate(kx_range):
         phases[i, j] = berry_phase(kx, ky, t, M)
 
 # Plotar a fase de Berry em função de Kx e Ky
-plt.figure(figsize=(8, 6))
+plt.figure()
 plt.imshow(phases.T, origin='lower', extent=[kx_range[0], kx_range[-1], ky_range[0], ky_range[-1]], cmap='jet')
 plt.colorbar(label='Berry Phase')
-plt.xlabel('Kx')
-plt.ylabel('Ky')
-plt.title('Berry Phase in Momentum Space')
+
+plt.xlabel('K$_x$', fontsize=18)
+plt.ylabel('K$_y$', fontsize=18)
+#plt.title('Berry Phase in Momentum Space')
+plt.tight_layout()
 plt.savefig('berry.png', dpi=800)
 
 # Plotar a estrutura de bandas
@@ -55,13 +57,14 @@ for i, kx in enumerate(kx_range):
     energies[i, :] = eigenvalues
 
 # Plotar a estrutura de bandas
-plt.figure(figsize=(8, 6))
+plt.figure()
 for band in range(num_bands):
     plt.plot(kx_range, energies[:, band], label='Band {}'.format(band + 1))
-plt.xlabel('Kx')
-plt.ylabel('Energy')
-plt.title('Energy Band Structure')
+plt.xlabel('K$_x$', fontsize=18)
+plt.ylabel('Energy', fontsize=18)
+#plt.title('Energy Band Structure')
 plt.legend()
+plt.tight_layout()
 plt.savefig('bands.png', dpi=800)
 
 # Plotar a fase de Berry para kx fixo
@@ -73,9 +76,10 @@ for i, ky in enumerate(ky_range):
     phases_fixed_ky[i] = berry_phase(kx, fixed_ky, t, M)
 
 # Plotar a fase de Berry para kx fixo
-plt.figure(figsize=(8, 6))
+plt.figure()
 plt.plot(ky_range, phases_fixed_ky, color='r')
-plt.xlabel('Ky')
-plt.ylabel('Berry Phase')
-plt.title('Berry Phase for Fixed Ky')
+plt.xlabel('K$_y$', fontsize=18)
+plt.ylabel('Berry Phase', fontsize=18)
+#plt.title('Berry Phase for Fixed Ky')
+plt.tight_layout()
 plt.savefig('just_k.png', dpi=800)
