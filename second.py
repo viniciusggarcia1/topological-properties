@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+#
 # Definir a Hamiltoniana
 def hamiltonian(kx, ky, t, M):
     sigma_x = np.array([[0, 1], [1, 0]])
