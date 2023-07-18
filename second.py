@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#
+
+# Parâmetros da Hamiltoniana
+t = 0.5
+M = 1
+
 # Definir a Hamiltoniana
 def hamiltonian(kx, ky, t, M):
     sigma_x = np.array([[0, 1], [1, 0]])
@@ -26,10 +30,6 @@ num_points = 100
 kx_range = np.linspace(-np.pi, np.pi, num_points)
 ky_range = np.linspace(-np.pi, np.pi, num_points)
 phases = np.zeros((num_points, num_points))
-
-# Parâmetros da Hamiltoniana
-t = 0.5
-M = 1
 
 # Calcular a fase de Berry para cada ponto da malha
 for i, kx in enumerate(kx_range):
