@@ -43,10 +43,7 @@ for i in range (0, len(E0), 1):
 
 plt.ylabel('Energy', fontsize=18)
 plt.yticks(fontsize=14)
-plt.ylabel('k$_x$', fontsize=16)
+plt.xlabel('k$_x$', fontsize=16)
 
 plt.tight_layout()
 plt.savefig('proj.png', dpi=800)
-
-
-
