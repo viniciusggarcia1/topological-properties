@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Parâmetros da Hamiltoniana
-t = 0.1
+t = 0.5
 M = 1
 
 # Definir a Hamiltoniana
@@ -43,6 +43,8 @@ plt.colorbar(label='Berry Phase')
 
 plt.xlabel('K$_x$', fontsize=18)
 plt.ylabel('K$_y$', fontsize=18)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 #plt.title('Berry Phase in Momentum Space')
 plt.tight_layout()
 plt.savefig('berry.png', dpi=800)
@@ -62,24 +64,52 @@ for band in range(num_bands):
     plt.plot(kx_range, energies[:, band], label='Band {}'.format(band + 1))
 plt.xlabel('K$_x$', fontsize=18)
 plt.ylabel('Energy', fontsize=18)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
 #plt.title('Energy Band Structure')
 plt.legend()
 plt.tight_layout()
 plt.savefig('bands.png', dpi=800)
 
+
+#Transição de Fase Kx fixo+++++++++++++++++++++++++++++++++++++++++++++++++
+
 # Plotar a fase de Berry para kx fixo
-fixed_ky = np.pi / 4
-phases_fixed_ky = np.zeros(num_points)
+fixed_kx = 1
+phases_fixed_kx = np.zeros(num_points)
 
 # Calcular a fase de Berry para kx fixo e ky variando
 for i, ky in enumerate(ky_range):
-    phases_fixed_ky[i] = berry_phase(kx, fixed_ky, t, M)
+    phases_fixed_kx[i] = berry_phase(fixed_kx, ky, t, M)
 
 # Plotar a fase de Berry para kx fixo
 plt.figure()
-plt.plot(ky_range, phases_fixed_ky, color='r')
+plt.plot(ky_range, phases_fixed_kx, color='r')
 plt.xlabel('K$_y$', fontsize=18)
 plt.ylabel('Berry Phase', fontsize=18)
-#plt.title('Berry Phase for Fixed Ky')
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+#plt.title('Berry Phase for Fixed K$_x$')
 plt.tight_layout()
-plt.savefig('just_k.png', dpi=800)
+plt.savefig('kx_fixed.png', dpi=800)
+
+#Transição de Fase Ky fixo+++++++++++++++++++++++++++++++++++++++++++++++++
+
+# Plotar a fase de Berry para ky fixo
+fixed_ky = 1
+phases_fixed_ky = np.zeros(num_points)
+
+# Calcular a fase de Berry para kx fixo e ky variando
+for i, kx in enumerate(kx_range):
+    phases_fixed_ky[i] = berry_phase(kx, fixed_ky, t, M)
+
+# Plotar a fase de Berry para ky fixo
+plt.figure()
+plt.plot(kx_range, phases_fixed_ky, color='r')
+plt.xlabel('K$_x$', fontsize=18)
+plt.ylabel('Berry Phase', fontsize=18)
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+#plt.title('Berry Phase for Fixed K$_x$')
+plt.tight_layout()
+plt.savefig('ky_fixed.png', dpi=800)
