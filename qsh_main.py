@@ -1,9 +1,11 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 # Parâmetros da Hamiltoniana
-t = 0.5
-M = 1
+t = 0.3
+M = 1.0
+fixed_kx = 1
+fixed_ky = 1
 
 # Definir a Hamiltoniana
 def hamiltonian(kx, ky, t, M):
@@ -75,7 +77,7 @@ plt.savefig('bands.png', dpi=800)
 #Transição de Fase Kx fixo+++++++++++++++++++++++++++++++++++++++++++++++++
 
 # Plotar a fase de Berry para kx fixo
-fixed_kx = 1
+
 phases_fixed_kx = np.zeros(num_points)
 
 # Calcular a fase de Berry para kx fixo e ky variando
@@ -96,7 +98,7 @@ plt.savefig('kx_fixed.png', dpi=800)
 #Transição de Fase Ky fixo+++++++++++++++++++++++++++++++++++++++++++++++++
 
 # Plotar a fase de Berry para ky fixo
-fixed_ky = 1
+
 phases_fixed_ky = np.zeros(num_points)
 
 # Calcular a fase de Berry para kx fixo e ky variando
