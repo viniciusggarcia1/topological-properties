@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 # Parâmetros da Hamiltoniana
-t = 0.3
-M = 1.0
+t = -1
+M = 1
 fixed_kx = 1
 fixed_ky = 1
 
@@ -54,21 +54,24 @@ plt.savefig('berry.png', dpi=800)
 # Plotar a estrutura de bandas
 num_bands = 2
 energies = np.zeros((num_points, num_bands))
+E0=[]
+E1=[]
 
 # Calcular as energias para cada ponto da malha
 for i, kx in enumerate(kx_range):
     eigenvalues, _ = diagonalize_hamiltonian(kx, 0, t, M)  # Fixar ky em 0
-    energies[i, :] = eigenvalues
+    #energies[i, :] = eigenvalues
+    E0.append(eigenvalues[0])
+    E1.append(eigenvalues[1])
 
 # Plotar a estrutura de bandas
 plt.figure()
-for band in range(num_bands):
-    plt.plot(kx_range, energies[:, band], label='Band {}'.format(band + 1))
+plt.plot(kx_range, E0, c='blue', label=f'M={M} and t={t}')
+plt.plot(kx_range, E1, c='blue')
 plt.xlabel('K$_x$', fontsize=18)
 plt.ylabel('Energy', fontsize=18)
 plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
-#plt.title('Energy Band Structure')
 plt.legend()
 plt.tight_layout()
 plt.savefig('bands.png', dpi=800)
@@ -86,12 +89,12 @@ for i, ky in enumerate(ky_range):
 
 # Plotar a fase de Berry para kx fixo
 plt.figure()
-plt.plot(ky_range, phases_fixed_kx, color='r')
+plt.plot(ky_range, phases_fixed_kx, color='r', label=f'k$_x$={fixed_kx}')
 plt.xlabel('K$_y$', fontsize=18)
 plt.ylabel('Berry Phase', fontsize=18)
 plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
-#plt.title('Berry Phase for Fixed K$_x$')
+plt.legend()
 plt.tight_layout()
 plt.savefig('kx_fixed.png', dpi=800)
 
@@ -107,11 +110,11 @@ for i, kx in enumerate(kx_range):
 
 # Plotar a fase de Berry para ky fixo
 plt.figure()
-plt.plot(kx_range, phases_fixed_ky, color='r')
+plt.plot(kx_range, phases_fixed_ky, color='r', label=f'k$_y$={fixed_ky}')
 plt.xlabel('K$_x$', fontsize=18)
 plt.ylabel('Berry Phase', fontsize=18)
 plt.xticks(fontsize=16)
 plt.yticks(fontsize=16)
-#plt.title('Berry Phase for Fixed K$_x$')
+plt.legend()
 plt.tight_layout()
 plt.savefig('ky_fixed.png', dpi=800)

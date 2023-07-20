@@ -44,6 +44,7 @@ for i in range (0, len(E0), 1):
 plt.ylabel('Energy', fontsize=18)
 plt.yticks(fontsize=14)
 plt.xlabel('k$_x$', fontsize=16)
+plt.text(-0.7, 7, f'M={qsh.M} and t={qsh.t}')
 
 plt.tight_layout()
 plt.savefig('proj.png', dpi=800)
