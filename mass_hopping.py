@@ -1,4 +1,4 @@
-import qsh_main as qsh
+import qshin as qsh
 import numpy as np
 from matplotlib import pyplot as plt
 

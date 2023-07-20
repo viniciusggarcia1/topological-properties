@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 # Parâmetros da Hamiltoniana
-t = 0.25
-M = 1
+t = float(input('Enter the hopping parameter (t): '))
+M = float(input('Enter the topological mass (M): '))
 fixed_kx = 1
 fixed_ky = 1
 
@@ -39,17 +39,19 @@ for i, kx in enumerate(kx_range):
         phases[i, j] = berry_phase(kx, ky, t, M)
 
 # Plotar a fase de Berry em função de Kx e Ky 
-plt.figure()
-plt.imshow(phases.T, origin='lower', extent=[kx_range[0], kx_range[-1], ky_range[0], ky_range[-1]], cmap='jet')
-plt.colorbar(label='Berry Phase')
 
-plt.xlabel('K$_x$', fontsize=18)
-plt.ylabel('K$_y$', fontsize=18)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-#plt.title('Berry Phase in Momentum Space')
-plt.tight_layout()
-plt.savefig('berry.png', dpi=800)
+def graph_berry():
+    plt.figure()
+    plt.imshow(phases.T, origin='lower', extent=[kx_range[0], kx_range[-1], ky_range[0], ky_range[-1]], cmap='jet')
+    plt.colorbar(label='Berry Phase')
+
+    plt.xlabel('K$_x$', fontsize=18)
+    plt.ylabel('K$_y$', fontsize=18)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    #plt.title('Berry Phase in Momentum Space')
+    plt.tight_layout()
+    plt.savefig('berry.png', dpi=800)
 
 # Plotar a estrutura de bandas
 num_bands = 2
@@ -65,16 +67,17 @@ for i, kx in enumerate(kx_range):
     E1.append(eigenvalues[1])
 
 # Plotar a estrutura de bandas
-plt.figure()
-plt.plot(kx_range, E0, c='blue', label=f'M={M} and t={t}')
-plt.plot(kx_range, E1, c='blue')
-plt.xlabel('K$_x$', fontsize=18)
-plt.ylabel('Energy', fontsize=18)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend()
-plt.tight_layout()
-plt.savefig('bands.png', dpi=800)
+def graph_bands():
+    plt.figure()
+    plt.plot(kx_range, E0, c='blue', label=f'M={M} and t={t}')
+    plt.plot(kx_range, E1, c='blue')
+    plt.xlabel('K$_x$', fontsize=18)
+    plt.ylabel('Energy', fontsize=18)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('bands.png', dpi=800)
 
 
 #Transição de Fase Kx fixo+++++++++++++++++++++++++++++++++++++++++++++++++
@@ -88,15 +91,16 @@ for i, ky in enumerate(ky_range):
     phases_fixed_kx[i] = berry_phase(fixed_kx, ky, t, M)
 
 # Plotar a fase de Berry para kx fixo
-plt.figure()
-plt.plot(ky_range, phases_fixed_kx, color='r', label=f'k$_x$={fixed_kx}')
-plt.xlabel('K$_y$', fontsize=18)
-plt.ylabel('Berry Phase', fontsize=18)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend()
-plt.tight_layout()
-plt.savefig('kx_fixed.png', dpi=800)
+def graph_kx_fixed():
+    plt.figure()
+    plt.plot(ky_range, phases_fixed_kx, color='r', label=f'k$_x$={fixed_kx}')
+    plt.xlabel('K$_y$', fontsize=18)
+    plt.ylabel('Berry Phase', fontsize=18)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('kx_fixed.png', dpi=800)
 
 #Transição de Fase Ky fixo+++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -109,12 +113,13 @@ for i, kx in enumerate(kx_range):
     phases_fixed_ky[i] = berry_phase(kx, fixed_ky, t, M)
 
 # Plotar a fase de Berry para ky fixo
-plt.figure()
-plt.plot(kx_range, phases_fixed_ky, color='r', label=f'k$_y$={fixed_ky}')
-plt.xlabel('K$_x$', fontsize=18)
-plt.ylabel('Berry Phase', fontsize=18)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend()
-plt.tight_layout()
-plt.savefig('ky_fixed.png', dpi=800)
+def graph_ky_fixed():
+    plt.figure()
+    plt.plot(kx_range, phases_fixed_ky, color='r', label=f'k$_y$={fixed_ky}')
+    plt.xlabel('K$_x$', fontsize=18)
+    plt.ylabel('Berry Phase', fontsize=18)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('ky_fixed.png', dpi=800)
