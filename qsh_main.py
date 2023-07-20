@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 
 # Parâmetros da Hamiltoniana
-t = -1
+t = 0.25
 M = 1
 fixed_kx = 1
 fixed_ky = 1
