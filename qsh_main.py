@@ -38,7 +38,7 @@ for i, kx in enumerate(kx_range):
     for j, ky in enumerate(ky_range):
         phases[i, j] = berry_phase(kx, ky, t, M)
 
-# Plotar a fase de Berry em função de Kx e Ky
+# Plotar a fase de Berry em função de Kx e Ky 
 plt.figure()
 plt.imshow(phases.T, origin='lower', extent=[kx_range[0], kx_range[-1], ky_range[0], ky_range[-1]], cmap='jet')
 plt.colorbar(label='Berry Phase')
