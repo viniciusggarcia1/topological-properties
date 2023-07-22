@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt 
 
-# Definir a Hamiltoniana
+# Defining the Hamiltonian
 def hamiltonian(kx, ky, t, M):
     sigma_x = np.array([[0, 1], [1, 0]])
     sigma_y = np.array([[0, -1j], [1j, 0]])
@@ -9,19 +9,19 @@ def hamiltonian(kx, ky, t, M):
     H = t * kx * sigma_x + t * ky * sigma_y + (M - kx**2) * sigma_z
     return H
 
-# Calcular os autovalores e autovetores da Hamiltoniana
+# Calculate the eigenvalues and the eigenvector from a given Hamiltonian
 def diagonalize_hamiltonian(kx, ky, t, M):
     H = hamiltonian(kx, ky, t, M)
     eigenvalues, eigenvectors = np.linalg.eigh(H)
     return eigenvalues, eigenvectors
 
-# Calcular a fase de Berry
+# Calculate the Berry Phase
 def berry_phase(kx, ky, t, M):
     eigenvalues, eigenvectors = diagonalize_hamiltonian(kx, ky, t, M)
     phase = np.angle(np.prod(np.conj(eigenvectors[:, 0])))
     return phase
 
-# Plotar a fase de Berry em função de Kx e Ky 
+# Berry Phase graph plot (function of Kx and Ky) 
 def graph_berry(phases, kx_range, ky_range):
     plt.figure()
     plt.imshow(phases.T, origin='lower', extent=[kx_range[0], kx_range[-1], ky_range[0], ky_range[-1]], cmap='jet')
@@ -33,7 +33,7 @@ def graph_berry(phases, kx_range, ky_range):
     plt.tight_layout()
     plt.savefig('berry.png', dpi=800)
 
-# Plotar a estrutura de bandas
+# Band Structure graph plot
 def graph_bands(kx_range, E0, E1, M, t):
     plt.figure()
     plt.plot(kx_range, E0, c='blue', label=f'M={M} and t={t}')
@@ -46,7 +46,7 @@ def graph_bands(kx_range, E0, E1, M, t):
     plt.tight_layout()
     plt.savefig('bands.png', dpi=800)
 
-# Plotar a fase de Berry para kx fixo
+# Berry Phase graph plot for a fixed kx
 def graph_kx_fixed(ky_range, phases_fixed_kx, fixed_kx):
     plt.figure()
     plt.plot(ky_range, phases_fixed_kx, color='r', label=f'k$_x$={fixed_kx}')
@@ -58,7 +58,7 @@ def graph_kx_fixed(ky_range, phases_fixed_kx, fixed_kx):
     plt.tight_layout()
     plt.savefig('kx_fixed.png', dpi=800)
 
-# Plotar a fase de Berry para ky fixo
+# Berry Phase graph plot for a fixed ky
 def graph_ky_fixed(kx_range, phases_fixed_ky, fixed_ky):
     plt.figure()
     plt.plot(kx_range, phases_fixed_ky, color='r', label=f'k$_y$={fixed_ky}')
@@ -70,7 +70,7 @@ def graph_ky_fixed(kx_range, phases_fixed_ky, fixed_ky):
     plt.tight_layout()
     plt.savefig('ky_fixed.png', dpi=800)
 
-#Função para calcular a projeção
+# Projection of the band structure on a spin basis
 def graph_proj(weight0, weight1, kx_range, E0, E1, M, t):
     plt.figure()
     for i in range (0, len(E0), 1):
