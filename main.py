@@ -9,13 +9,15 @@ import qsh
 from tqdm import tqdm
 import time
 
+print()
 print("========================TOPOLOGICAL PROPERTIES========================")
-
+print()
 # Parâmetros da Hamiltoniana
 t = float(input('Enter the hopping parameter (t): '))
 M = float(input('Enter the topological mass (M): '))
 fixed_kx = 1
 fixed_ky = 1
+print()
 
 # Criar uma malha de pontos no espaço dos momentos
 num_points = 100
@@ -83,26 +85,22 @@ for kx in range (0, len(kx_range), 1):
     weight1.append(Vconj1[kx][0]*(sigma_z[0][0]*V1[kx][0] + sigma_z[0][1]*V1[kx][1]) + Vconj1[kx][1]*(sigma_z[1][0]*V1[kx][0] + sigma_z[1][1]*V1[kx][1]))
 
 #Chamaremos todas as funções de plot para salvar os gráficos
-
-with tqdm(total=100) as prog:
+with tqdm(total=5) as prog:
     qsh.graph_berry(phases, kx_range, ky_range)
-    prog.update(20)
+    prog.update(1)
 
     qsh.graph_bands(kx_range, E0, E1, M, t)
-    prog.update(20)
+    prog.update(1)
 
     qsh.graph_kx_fixed(ky_range, phases_fixed_kx, fixed_kx)
-    prog.update(20)
+    prog.update(1)
 
     qsh.graph_ky_fixed(kx_range, phases_fixed_ky, fixed_ky)
-    prog.update(20)
+    prog.update(1)
 
     qsh.graph_proj(weight0, weight1, kx_range, E0, E1, M, t)
-    prog.update(20)
+    prog.update(1)
 
-
-
-
-
-
+print()
 print("=========================by Vinícius G. Garcia========================")
+print()
