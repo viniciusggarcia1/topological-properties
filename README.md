@@ -1,11 +1,18 @@
 # Topological Properties
-This code aims to explore the topological properties of Quantum Spin Hall. The graphs generated help visualize and analyze the system's band structure and Berry phase, which are crucial for understanding its topological characteristics.
+This code aims to explore the topological properties of Quantum Spin Hall Efect. The graphs generated help visualize and analyze the system's band structure and Berry phase, which are crucial for understanding its topological characteristics.
 
 # The Code
-The code is organized in two files: qsh.py and main.py. The qsh.py contains functions that are used in the main code (main.py). In order to get some results you can execute de main.py using python3, for example, and you'll have to enter the hopping term and the topological mass. The Hamiltonian was implemented directly in the code, however can be easily changed. In this version the Hamiltonian has to be 2x2.
+The code is organized into two files: `qsh.py` and `main.py`. 
+
+- `qsh.py` contains essential functions and calculations used in the main code (`main.py`). This file includes the implementation of the Hamiltonian and other relevant mathematical operations, like functions to plot graphs.
+
+- `main.py` is the main script that interacts with the user and generates the graphs. To execute the code and obtain results, you can run `main.py` using Python 3.
+
+
+It is important to note that that the Hamiltonian has been implemented directly in the code but can be easily changed by the user if desired. Additionally, it emphasizes that for this version, the Hamiltonian needs to be a 2x2 matrix.
 
 # Output
-To use the code, run main.py and follow the on-screen instructions to input the hopping term and topological mass. The code will generate five graphs that will be better discussed below:
+To use the code, run main.py and follow the on-screen instructions to input the hopping term and topological mass. The code will generate five graphs (examples can be seen at output-examples directory) that will be better discussed below:
 
 - bands.png: A band structure plot from the Hamiltonian, fixing ky=0 and varying Kx.
 
