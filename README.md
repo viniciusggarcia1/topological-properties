@@ -2,11 +2,11 @@
 This code aims to explore the topological properties of Quantum Spin Hall Efect. The graphs generated help visualize and analyze the system's band structure and Berry phase, which are crucial for understanding its topological characteristics.
 
 # The Code
-The code is organized into two files: `qsh.py` and `main.py`. 
+The code is organized into two files: 'qsh.py' and 'main.py'. 
 
-- `qsh.py` contains essential functions and calculations used in the main code (`main.py`). This file includes the implementation of the Hamiltonian and other relevant mathematical operations, like functions to plot graphs.
+- 'qsh.py' contains essential functions and calculations used in the main code ('main.py'). This file includes the implementation of the Hamiltonian and other relevant mathematical operations, like functions to plot graphs.
 
-- `main.py` is the main script that interacts with the user and generates the graphs. To execute the code and obtain results, you can run `main.py` using Python 3.
+- 'main.py' is the main script that interacts with the user and generates the graphs. To execute the code and obtain results, you can run 'main.py' using Python 3.
 
 
 It is important to note that that the Hamiltonian has been implemented directly in the code but can be easily changed by the user if desired. Additionally, it emphasizes that for this version, the Hamiltonian needs to be a 2x2 matrix.
