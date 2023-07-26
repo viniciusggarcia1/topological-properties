@@ -1,5 +1,5 @@
 # Topological Properties
-This code aims to explore the topological properties of Quantum Spin Hall Efect. The graphs generated help visualize and analyze the system's band structure and Berry phase, which are crucial for understanding its topological characteristics.
+This code aims to explore the topological properties of the Quantum Spin Hall Effect. The graphs generated help to visualize and analyze the system's band structure and Berry phase, which are crucial for understanding its topological characteristics.
 
 # The Code
 The code is organized into two files: `qsh.py` and `main.py`. 
