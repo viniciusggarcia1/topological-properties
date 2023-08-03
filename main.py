@@ -81,9 +81,13 @@ for kx in range (0, len(kx_range), 1):
     Vconj0.append(np.conj(V[0]))
     Vconj1.append(np.conj(V[1]))
 
-    weight0.append(Vconj0[kx][0]*(sigma_z[0][0]*V0[kx][0] + sigma_z[0][1]*V0[kx][1]) + Vconj0[kx][1]*(sigma_z[1][0]*V0[kx][0] + sigma_z[1][1]*V0[kx][1]))
+    weight0.append(Vconj0[kx][0]*(sigma_z[0][0]*V0[kx][0] + sigma_z[0][1]*V0[kx][1]) + 
+                   Vconj0[kx][1]*(sigma_z[1][0]*V0[kx][0] + sigma_z[1][1]*V0[kx][1]))
 
-    weight1.append(Vconj1[kx][0]*(sigma_z[0][0]*V1[kx][0] + sigma_z[0][1]*V1[kx][1]) + Vconj1[kx][1]*(sigma_z[1][0]*V1[kx][0] + sigma_z[1][1]*V1[kx][1]))
+
+    weight1.append(Vconj1[kx][0]*(sigma_z[0][0]*V1[kx][0] + sigma_z[0][1]*V1[kx][1]) +
+                    Vconj1[kx][1]*(sigma_z[1][0]*V1[kx][0] + sigma_z[1][1]*V1[kx][1]))
+
 
 # We will call all Plot functions to save the graphics
 with tqdm(total=5) as prog:

@@ -24,7 +24,9 @@ def berry_phase(kx, ky, t, M):
 # Berry Phase graph plot (function of Kx and Ky) 
 def graph_berry(phases, kx_range, ky_range):
     plt.figure()
-    plt.imshow(phases.T, origin='lower', extent=[kx_range[0], kx_range[-1], ky_range[0], ky_range[-1]], cmap='jet')
+    plt.imshow(phases.T, origin='lower',
+                extent=[kx_range[0], kx_range[-1],
+                 ky_range[0], ky_range[-1]], cmap='jet')
     plt.colorbar(label='Berry Phase')
     plt.xlabel('K$_x$', fontsize=18)
     plt.ylabel('K$_y$', fontsize=18)
